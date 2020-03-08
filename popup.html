@@ -34,7 +34,7 @@ h2, .full-width-borders {
 a.button {
   position: relative;
   float: none;
-  width: 120px;
+  width: 1200px;
   padding: 5px;
   font-weight: 600;
   text-align: center;
@@ -46,10 +46,24 @@ a.button {
 }
 .btnBlueGreen {
   background: #00AE68;
+
 }
 .center {
   text-align: center; margin-left: auto; margin-right: auto; align-items: center; align-self: center; align-content: center;
 }
+
+.test button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: #f0ead6;
+  background-color: #00AE68;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
 /* FADE */
 .btnFade.btnBlueGreen:hover {
   background: #21825B;
@@ -67,6 +81,21 @@ a.button {
   color: grey;
   font-size: 22px;
 }
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: #f0ead6;
+  background-color: #00AE68;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
 
 
   </style>
@@ -83,13 +112,16 @@ a.button {
 
   <body style="min-width: 350px; min-height: 580px;">
     <div class="center">
-      <a id="checkPage" href="#" title="Button fade blue/green" class="button btnFade btnBlueGreen">Search!</a>
+      <div class="test">
+
+        <p><button id="checkPage" href="#">Search for a local product!</button></p>
+      </div>
     </div>
         <div class="card">
-          <img src="icon.png" alt="Denim Jeans" style="width:100%">
-          <h1>Tailored Jeans</h1>
+          <img src="icon.png" alt="Leaf" style="width:100%">
+          <h1>It's a leaf</h1>
           <p class="price">$19.99</p>
-          <p><a class="button btnFade btnBlueGreen">Get on eBay!</a></p>
+          <p><button>Get on Ebay!</button></p>
     </div>    
     <div id='message'></div>
   </body>
