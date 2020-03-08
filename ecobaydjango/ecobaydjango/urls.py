@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import find_items
+from .views import find_items_by_keyword
 
 urlpatterns = [
-    path('find_items/', find_items, name='find_items'),
+    path('', find_items_by_keyword, name='find_items_by_keyword'),
     path('admin/', admin.site.urls),
 ]
