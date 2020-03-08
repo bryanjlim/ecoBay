@@ -45,7 +45,6 @@ function findItemsByKeywordsAndRadius(keyword, results, postalCode, maxRadius) {
     }
 
     let url = getURL(parameters);
-    console.log(url);
     return getJSON(url).then((raw) => {
         let rawItems = raw.findItemsByKeywordsResponse[0].searchResult[0].item;
         let newItems = [];
