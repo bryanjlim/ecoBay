@@ -33,6 +33,12 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     } else {
       analyzeText(request.source.val).then(processedItem => {
         message.innerText = processedItem;
+        let numResults = 10;
+        findItemsByKeywords(processedItem, numResults).then((items) => {
+          for (let item in items) {
+            // do something with each item
+          }
+        });
       });
     }
   }

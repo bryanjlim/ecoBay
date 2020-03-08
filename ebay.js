@@ -10,7 +10,6 @@ function getURL(parameters) {
 }
 
 function getJSON(url) {
-    console.log(url);
     return fetch(url).then((response) => (response.json()))
 }
 
@@ -25,6 +24,9 @@ function getJSON(url) {
 // OPTIONAL PARAMS:
 // postalCode (integer): the postal code of the buyer
 // maxRadius (integer): the maximum radius around the postalCode to search for
+// 
+// Returns in this format:
+//
 function findItemsByKeywordsAndRadius(keyword, results, postalCode, maxRadius) {
     let parameters = {
         'OPERATION-NAME': 'findItemsByKeywords',
@@ -53,7 +55,7 @@ function findItemsByKeywordsAndRadius(keyword, results, postalCode, maxRadius) {
                 'title': item.title[0],
                 'imageURL': item.galleryURL[0],
                 'location': item.location[0],
-                'price': parseInt(item.sellingStatus[0].currentPrice[0].__value__),
+                'price': parseFloat(item.sellingStatus[0].currentPrice[0].__value__),
                 'itemURL': item.viewItemURL[0],
             });
         }
@@ -74,10 +76,10 @@ findItemsByKeywords('shoes', 5).then((items) => {
     }
 });
 
-EXAMPLE: prints out the top 5 results for 'batman', with a radius of 10 miles
+EXAMPLE: prints out the top 5 results for 'red shirt', with a radius of 10 miles
 around the Zip Code 98195.
 
-findItemsByKeywordsAndRadius('batman', 5, 98195, 10).then((items) => {
+findItemsByKeywordsAndRadius('red shirt', 5, 98195, 10).then((items) => {
     for (let item of items) {
         console.log(item);
     }
