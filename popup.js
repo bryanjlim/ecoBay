@@ -52,15 +52,15 @@ function handleEbayItems(keyword) {
         res2.json().then(zipRes => {
           console.log(keyword);
           console.log(zipRes.zip);
-          findItemsByKeywordsAndRadius(keyword, 1, zipRes.zip, 25).then(
-            ebayItems => console.log(ebayItems)
-            // DO STUFF WITH EBAY ITEMS HERE
+          findItemsByKeywordsAndRadius(keyword, 5, zipRes.zip, 25).then(
+            ebayItems => addItems(ebayItems)
           );
         });
       });
     });
   });
 }
+
 document.addEventListener(
   "DOMContentLoaded",
   function() {
