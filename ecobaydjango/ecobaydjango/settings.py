@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o23pszxk9(^dmh4iq+-2(3(mg!h_=std=kw-jk8j%$ty0g@ie+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['onyx-elevator-270422.appspot.com']
+ALLOWED_HOSTS = ['onyx-elevator-270422.appspot.com', '127.0.0.1']
 
 
 # Application definition

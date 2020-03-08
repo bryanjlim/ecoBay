@@ -1,3 +1,6 @@
 ecobaydjango/env/
 ecobaydjango/static/
 ecobaydjango/.vscode/
+.vscode/
+env/
+node_modules/
