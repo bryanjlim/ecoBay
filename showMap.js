@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 function getLat() {
@@ -124,3 +125,29 @@ function addToMap(addme){
 
 
   
+=======
+function getGeo() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+    });
+  }
+  return pos;
+}
+
+require(["esri/Map", "esri/views/MapView"], function(Map, MapView) {
+  var map = new Map({
+    basemap: "topo-vector"
+  });
+
+  var view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [pos.lat, pos.lng], // longitude, latitude
+    zoom: 13
+  });
+});
+>>>>>>> 1e5a4462cf36bf84f32b880bb29d6cecaa80f652
