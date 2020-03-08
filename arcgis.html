@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.14/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.14/"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDRSb4A0H5fi3WpDyO7404mcz-H0mL2VQ"></script>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.14/esri/themes/light/main.css"
+    />
     <!-- GMaps Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.9/gmaps.min.js">
-    </script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- <script src="scripts/require.js"></script> -->
+    <script src="scripts/map.js"></script>
+    <script src="scripts/gmap.js"></script>
+    <script src="scripts/background.js"></script>
+    <script src="scripts/dojo.js"></script>
+    <script src="showMap.js"></script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <style>
-      html, body, #viewDiv {
+      html,
+      body,
+      #viewDiv {
         padding: 0;
         margin: 0;
         height: 100%;
@@ -18,7 +28,7 @@
       }
     </style>
   </head>
-  <body>
+  <body style="min-width: 1000px; min-height: 1000px">
     <div id="viewDiv"></div>
   </body>
 </html>

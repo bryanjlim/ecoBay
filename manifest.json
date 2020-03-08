@@ -5,9 +5,23 @@
   "description": "ecoBay helps redirect you from shopping sites like Amazon, where items are sometimes shipped from halfway around the world overnight to you, to local sellers.",
   "version": "1.0",
 
+  "content_scripts": [
+    {
+      "js": [
+        "scripts/dojo.js",
+        "scripts/gmap.js",
+        "scripts/map.js",
+        "scripts/require.js"
+      ],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "arcgis.html"
   },
-  "permissions": ["activeTab", "<all_urls>"]
+  "permissions": ["activeTab", "<all_urls>", "https://cdnjs.cloudflare.com/", "https://maps.googleapis.com/", "https://js.arcgis.com/", "https://js.arcgis.com/4.14/dojo/nls/dojo_en-us.js"]
 }
