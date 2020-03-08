@@ -22,7 +22,7 @@ function analyzeText(text) {
       body: JSON.stringify(data)
     }).then(fetched => {
       fetched.json().then(res => {
-        // console.log(res);
+        console.log(res);
         // const printableResult = JSON.stringify(res);
         let org;
         let item;
@@ -44,7 +44,7 @@ function analyzeText(text) {
               res["entities"][i].type === "WORK_OF_ART") &&
             !res["entities"][i].name.toLowerCase().includes("product") &&
             (res["entities"][i].mentions.length > 1 ||
-              res["entities"][i].salience > 0.15)
+              res["entities"][i].salience > 0.1)
           ) {
             item = res["entities"][i].name;
           }
