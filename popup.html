@@ -61,11 +61,14 @@ a.button {
 #p-float {
         max-width: 1200px;
         margin: 0 auto;
+
         /* Clearfix */
         overflow: auto;
       }
+      
       #p-float::after {
         /* Clearfix */
+        
         content: "";
         clear: both;
         display: table;
@@ -76,10 +79,12 @@ a.button {
         width: 25%;
       }
       div.p-float-in {
+        
         box-sizing: border-box;
         margin: 5px; 
         padding: 10px;
         border: 0px solid #f2dcdc;
+
         background: #f0ead6;
       }
       img.p-img {
@@ -99,10 +104,10 @@ a.button {
       }
         /* Responsive */
       @media only screen and (max-width: 1024px) {
-        div.p-float { width: 33%; }
+        div.p-float { width: 100%; }
       }
       @media only screen and (max-width: 600px) {
-        div.p-float { width: 50%; }
+        div.p-float { width: 100%; }
       }
 
   </style>
