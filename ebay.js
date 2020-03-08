@@ -51,10 +51,10 @@ function findItemsByKeywordsAndRadius(keyword, results, postalCode, maxRadius) {
 
   let url = getURL(parameters);
   return getJSON(url).then(raw => {
-    if (rawItems.length == 0) {
+    let rawItems = raw.findItemsByKeywordsResponse[0].searchResult[0].item;
+    if (rawItems == undefined) {
       return [];
     } else {
-      let rawItems = raw.findItemsByKeywordsResponse[0].searchResult[0].item;
       let newItems = [];
       for (let item of rawItems) {
         newItems.push({
