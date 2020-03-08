@@ -131,8 +131,13 @@ function getCard(item) {
   locationTag.className = 'price';
   locationTag.innerHTML = `Location: ${item.location}`;
   let buyButton = document.createElement('button');
-  buyButton.onclick = function() { window.location = item.itemURL };
   buyButton.innerHTML = 'Purchase on eBay';
+  buyButton.addEventListener('click', function() {
+    chrome.tabs.create({
+      url: item.itemURL,
+      active: false
+    });
+  })
 
   let newCard = document.createElement('div');
   newCard.className = 'card';
@@ -141,6 +146,5 @@ function getCard(item) {
   newCard.appendChild(priceTag);
   newCard.appendChild(locationTag);
   newCard.appendChild(buyButton);
-
   return newCard;
 }
