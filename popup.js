@@ -43,3 +43,40 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     }
   }
 });
+
+function addItems(items) {
+  let cardDeck = document.getElementById('cardDeck');
+  cardDeck.innerHTML = '';
+  for (let item in items) {
+    let newCard = getCard(item);
+    cardDeck.appendChild(newCard);
+  }
+}
+
+function getCard(item) {
+  let image = document.createElement('img');
+  image.setAttribute('src', item.imageURL);
+  image.setAttribute('style', 'width: 100%;');
+  let header = document.createElement('h1');
+  header.innerHTML = item.title;
+  let priceTag = document.createElement('p');
+  priceTag.className = 'price';
+  priceTag.innerHTML = `Price: $${item.price}`;
+  let buyButton = document.createElement('button');
+  buyButton.onclick = function() { window.location = item.itemURL };
+  buyButton.innerHTML = 'Purchase on eBay';
+
+  let newCard = document.createElement('div');
+  newCard.className = 'card';
+  newCard.appendChild(image);
+  newCard.appendChild(header);
+  newCard.appendChild(priceTag);
+  newCard.appendChild(buyButton);
+
+  return newCard;
+}
+
+console.log("WORK");
+findItemsByKeywordsAndRadius('phone', 10, 95060, 10).then((items) => {
+  addItems(items);
+});
