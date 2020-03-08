@@ -28,6 +28,10 @@ function getJSON(url) {
 // Returns in this format:
 //
 function findItemsByKeywordsAndRadius(keyword, results, postalCode, maxRadius) {
+    if (!keyword || !results) {
+        return [];
+    }
+
     let parameters = {
         'OPERATION-NAME': 'findItemsByKeywords',
         'SERVICE-VERSION': '1.0.0',

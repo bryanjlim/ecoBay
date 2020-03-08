@@ -53,7 +53,9 @@ function handleEbayItems(keyword) {
           console.log(keyword);
           console.log(zipRes.zip);
           findItemsByKeywordsAndRadius(keyword, 5, zipRes.zip, 25).then(
-            ebayItems => addItems(ebayItems)
+            (ebayItems) => {
+              addItems(ebayItems);
+            }
           );
         });
       });
