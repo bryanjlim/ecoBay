@@ -127,6 +127,9 @@ function getCard(item) {
   let priceTag = document.createElement('p');
   priceTag.className = 'price';
   priceTag.innerHTML = `Price: $${item.price}`;
+  let locationTag = document.createElement('p');
+  locationTag.className = 'price';
+  locationTag.innerHTML = `Location: ${item.location}`;
   let buyButton = document.createElement('button');
   buyButton.onclick = function() { window.location = item.itemURL };
   buyButton.innerHTML = 'Purchase on eBay';
@@ -136,6 +139,7 @@ function getCard(item) {
   newCard.appendChild(image);
   newCard.appendChild(header);
   newCard.appendChild(priceTag);
+  newCard.appendChild(locationTag);
   newCard.appendChild(buyButton);
 
   return newCard;
