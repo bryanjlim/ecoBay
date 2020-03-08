@@ -55,6 +55,56 @@ a.button {
 .btnFade.btnBlueGreen:hover {
   background: #21825B;
 }
+
+
+
+#p-float {
+        max-width: 1200px;
+        margin: 0 auto;
+        /* Clearfix */
+        overflow: auto;
+      }
+      #p-float::after {
+        /* Clearfix */
+        content: "";
+        clear: both;
+        display: table;
+      }
+      /* Product items */
+      div.p-float {
+        float: left;
+        width: 25%;
+      }
+      div.p-float-in {
+        box-sizing: border-box;
+        margin: 5px; 
+        padding: 10px;
+        border: 1px solid #f2dcdc;
+        background: #fff7f7;
+      }
+      img.p-img {
+        width: 100%;
+        height: auto;
+      }
+      div.p-name {
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+      div.p-price {
+        color: #f44242;
+      }
+      div.p-desc {
+        color: #888;
+        font-size: 0.9em;
+      }
+        /* Responsive */
+      @media only screen and (max-width: 1024px) {
+        div.p-float { width: 33%; }
+      }
+      @media only screen and (max-width: 600px) {
+        div.p-float { width: 50%; }
+      }
+
   </style>
 
     <title>ecoBay</title>
@@ -71,6 +121,14 @@ a.button {
     <div class="center">
       <p>Test</p>
       <a id="checkPage" href="#" title="Button fade blue/green" class="button btnFade btnBlueGreen">Search!</a>
+      <div id="p-float">
+      <div class="p-float"><div class="p-float-in">
+        <img class="p-img" src="icon.png"/>
+        <div class="p-name">Item A</div>
+        <div class="p-price">$99.99</div>
+        <div class="p-desc">Lorem ipsum dolor sit amet, elit.</div>
+        <button class="p-add">Add to Cart</button>
+      </div></div>
     </div>
     <div id='message'></div>
   </body>
