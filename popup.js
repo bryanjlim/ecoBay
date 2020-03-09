@@ -27,18 +27,14 @@ document.addEventListener(
 );
 
 chrome.runtime.onMessage.addListener(function(request, sender) {
-  if (request.action == "getSource") {
-    if (request.source.found) {
-      const keyword = request.source.val;
+  analyzeText(request.source.val).then(keyword => {
+    if (keyword == undefined) {
+      message.innerText = "No local sellers found. Become one at eBay.com/sell";
+    } else {
       message.innerText = keyword;
       handleEbayItems(keyword);
-    } else {
-      analyzeText(request.source.val).then(keyword => {
-        message.innerText = keyword;
-        handleEbayItems(keyword);
-      });
     }
-  }
+  });
 });
 
 function handleEbayItems(keyword) {
@@ -53,7 +49,7 @@ function handleEbayItems(keyword) {
           console.log(keyword);
           console.log(zipRes.zip);
           findItemsByKeywordsAndRadius(keyword, 5, zipRes.zip, 25).then(
-            (ebayItems) => {
+            ebayItems => {
               addItems(ebayItems);
             }
           );
@@ -99,7 +95,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
       analyzeText(request.source.val).then(processedItem => {
         message.innerText = processedItem;
         let numResults = 10;
-        findItemsByKeywords(processedItem, numResults).then((items) => {
+        findItemsByKeywords(processedItem, numResults).then(items => {
           for (let item in items) {
             // do something with each item
           }
@@ -110,37 +106,43 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 });
 
 function addItems(items) {
-  let cardDeck = document.getElementById('cardDeck');
-  cardDeck.innerHTML = '';
-  for (let item of items) {
-    let newCard = getCard(item);
-    cardDeck.appendChild(newCard);
+  let cardDeck = document.getElementById("cardDeck");
+  cardDeck.innerHTML = "";
+  if (items.length > 0) {
+    for (let item of items) {
+      let newCard = getCard(item);
+      cardDeck.appendChild(newCard);
+    }
+  } else {
+    let p = document.createElement("p");
+    p.innerText = "No local sellers found. Become one at eBay.com/sell";
+    cardDeck.appendChild(p);
   }
 }
 
 function getCard(item) {
-  let image = document.createElement('img');
-  image.setAttribute('src', item.imageURL);
-  image.setAttribute('style', 'width: 100%;');
-  let header = document.createElement('h1');
+  let image = document.createElement("img");
+  image.setAttribute("src", item.imageURL);
+  image.setAttribute("style", "width: 100%;");
+  let header = document.createElement("h1");
   header.innerHTML = item.title;
-  let priceTag = document.createElement('p');
-  priceTag.className = 'price';
+  let priceTag = document.createElement("p");
+  priceTag.className = "price";
   priceTag.innerHTML = `Price: $${item.price}`;
-  let locationTag = document.createElement('p');
-  locationTag.className = 'price';
+  let locationTag = document.createElement("p");
+  locationTag.className = "price";
   locationTag.innerHTML = `Location: ${item.location}`;
-  let buyButton = document.createElement('button');
-  buyButton.innerHTML = 'Purchase on eBay';
-  buyButton.addEventListener('click', function() {
+  let buyButton = document.createElement("button");
+  buyButton.innerHTML = "Purchase on eBay";
+  buyButton.addEventListener("click", function() {
     chrome.tabs.create({
       url: item.itemURL,
       active: false
     });
-  })
+  });
 
-  let newCard = document.createElement('div');
-  newCard.className = 'card';
+  let newCard = document.createElement("div");
+  newCard.className = "card";
   newCard.appendChild(image);
   newCard.appendChild(header);
   newCard.appendChild(priceTag);
